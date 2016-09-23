@@ -9,16 +9,16 @@
 #!/bin/bash
 
 #Inicio
-echo ''
-echo "======================"
-echo ''
-echo " DemoniacTeamCompiler"
-echo ''
-echo "======================"
-echo ''
+	echo "==========================================="
+  echo ' '
+	echo "  Script para compilar kernel con linario  "
+	echo "      <<Hecho por  DemoniacTeamDevs>>      "
+	echo ' '
+	echo "==========================================="
+sleep 3s
 
 #LINARIO
-echo "***Verificando Linario...***"
+echo "     >>>Verificando Linario<<<<     "
 echo ''
 LIN=~/arm-cortex_a7-linux-gnueabihf-linaro_4.9
 if [ ! -d "$LIN" ]; then
@@ -83,7 +83,7 @@ fi
 echo ''
 echo '==================================='
 echo ''
-echo 'Compilando Kernel con Linario'
+echo '   Compilando Kernel con Linario   '
 echo ''
 echo '==================================='
 echo ''
@@ -97,7 +97,7 @@ make -j$NUCLEO ARCH=arm CROSS_COMPILE=~/arm-cortex_a7-linux-gnueabihf-linaro_4.9
 echo ''
 echo '========================================='
 echo ''
-echo 'Compilacion terminada, Felicidades'
+echo '    Compilacion terminada, Felicidades   '
 echo ''
 echo '========================================='
 echo ''
