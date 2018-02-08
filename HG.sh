@@ -1,7 +1,7 @@
 #
 ##################################
 # Gr2_srk  <gr2.stark@gmail.com> #	
-# HB72K   <xxxxxxxxxx@gmail.com> #	
+# HB72K    <ghettoxx2@gmail.com> #	
 # Script Para Compilar Kernel    #
 ##################################
 #
@@ -9,20 +9,20 @@
 #!/bin/bash
 
 #Inicio
-	echo "==========================================="
-  echo ' '
-	echo "  Script para compilar kernel con linario  "
-	echo "      <<Hecho por  DemoniacTeamDevs>>      "
-	echo ' '
-	echo "==========================================="
-sleep 3s
+echo ''
+echo "======================"
+echo ''
+echo " DemoniacTeamCompiler"
+echo ''
+echo "======================"
+echo ''
 
 #LINARIO
-echo "     >>>Verificando Linario<<<<     "
+echo "***Verificando Linario...***"
 echo ''
-LIN=~/arm-cortex_a7-linux-gnueabihf-linaro_4.9
+LIN=~/toolchain
 if [ ! -d "$LIN" ]; then
-git clone https://github.com/Christopher83/arm-cortex_a7-linux-gnueabihf-linaro_4.9.git 
+git clone https://github.com/ArchiDroid/Toolchain.git -b linaro-4.9 toolchain
 echo "***Se usará Linario existente***"
 echo ''
 fi
@@ -53,7 +53,7 @@ sleep 1s
 #Cuestion
 echo ''
 echo '***Especifique la config del DEVICE***'
-echo 'Ejemplo: cm_hwY635_defconfig'
+echo 'Ejemplo: wt6737m_35_n_defconfig'
 echo ''
 read DEVICE
 echo ''
@@ -83,7 +83,7 @@ fi
 echo ''
 echo '==================================='
 echo ''
-echo '   Compilando Kernel con Linario   '
+echo 'Compilando Kernel con toolchain'
 echo ''
 echo '==================================='
 echo ''
@@ -91,13 +91,15 @@ echo '***Ingrese numero de nucleos de su Equipo +1***'
 echo 'Ejemplo: Si su equipo cuenta con 4 nucleos debe ingresar el numero 5 '
 read NUCLEO
 make ARCH=arm $DEVICE
-make -j$NUCLEO ARCH=arm CROSS_COMPILE=~/arm-cortex_a7-linux-gnueabihf-linaro_4.9/bin/arm-cortex_a7-linux-gnueabihf-
+make -j$NUCLEO ARCH=arm CROSS_COMPILE=$PWD/toolchain/bin/arm-eabi-
+cp arch/arm/boot/zImage '/home/$PWD/Desktop/BUILD'
+find . -name '*ko' -exec cp '{}' '/home/$PWD/Desktop/BUILD' \
 
 #FIN
 echo ''
 echo '========================================='
 echo ''
-echo '    Compilacion terminada, Felicidades   '
+echo 'Compilacion terminada, Felicidades'
 echo ''
 echo '========================================='
 echo ''
